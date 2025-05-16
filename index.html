@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vallabha Madhusudhan | Game Developer Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Space+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style> 
+        :root {
+            --space-black: #0a0a18;
+            --star-white: #f0f0ff;
+            --nebula-purple: #bc13fe;
+            --galaxy-blue: #0066ff;
+            --planet-orange: #ff6b35;
+            --unreal-orange: #E68523;
+            --unreal-red: #A13C20;
+        }
+
+        body {
+            background: var(--space-black);
+            color: var(--star-white);
+            font-family: 'Space Mono', monospace;
+            line-height: 1.6;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Improved spacing */
+        section {
+            padding: 3rem 0;
+            margin: 2rem 0;
+        }
+
+        /* Animated Star Background */
+        .space-background {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 1.5s infinite;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.2; }
+            50% { opacity: 1; }
+            100% { opacity: 0.2; }
+        }
+
+        /* Improved Navbar with proper email alignment */
+        .astro-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.2rem 2rem;
+            background: rgba(10, 10, 24, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        /* Improved Email Button */
+        .top-email {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--star-white);
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.15);
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+            white-space: nowrap;
+        }
+
+        .top-email i {
+            color: var(--planet-orange);
+            transition: all 0.3s ease;
+        }
+
+        .top-email:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .top-email:hover i {
+            transform: rotate(360deg);
+            color: var(--nebula-purple);
+        }
+
+        .top-email::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 25px;
+            top: 0;
+            left: 0;
+            background: linear-gradient(45deg, transparent, rgba(188, 19, 254, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .top-email:hover::after {
+            opacity: 1;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(188, 19, 254, 0.2); }
+            70% { box-shadow: 0 0 0 10px rgba(188, 19, 254, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(188, 19, 254, 0); }
+        }
+
+        /* Updated About Me Label */
+        .about-label {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.2rem;
+            color: var(--galaxy-blue);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px var(--nebula-purple);
+            position: relative;
+            display: inline-block;
+        }
+
+        .about-label::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--galaxy-blue), transparent);
+            bottom: -5px;
+            left: 0;
+            animation: pulseUnderline 2s infinite;
+        }
+
+        @keyframes pulseUnderline {
+            0% { opacity: 0.5; width: 0%; }
+            50% { opacity: 1; width: 100%; }
+            100% { opacity: 0.5; width: 0%; }
+        }
+
+        /* Main Portfolio Heading */
+        .portfolio-heading {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            text-align: center;
+            margin: 5rem 0 2rem;
+            background: linear-gradient(45deg, var(--nebula-purple), var(--galaxy-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .portfolio-heading::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: var(--planet-orange);
+            margin: 1rem auto;
+            animation: pulse 2s infinite;
+        }
+
+        /* Updated Hero Section */
+        .stellar-hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: left;
+            padding: 0 2rem;
+            position: relative;
+            margin-top: 5rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-content {
+            width: 100%;
+            padding-left: 2rem;
+        }
+
+        .hero-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--galaxy-blue);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--star-white);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            max-width: 700px;
+            text-align: left;
+        }
+
+        /* Projects Section */
+        .cosmic-row {
+            margin: 4rem auto;
+            padding: 2rem;
+            background: rgba(10, 10, 24, 0.5);
+            border-radius: 12px;
+            max-width: 1200px;
+        }
+
+        .row-header {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            padding-left: 1rem;
+            border-left: 4px solid var(--planet-orange);
+        }
+
+        /* Engine Filter Buttons */
+        .engine-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .engine-button {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            min-width: 180px;
+            text-align: center;
+        }
+
+        .unity-button {
+            background: linear-gradient(45deg, var(--galaxy-blue), var(--nebula-purple));
+            color: white;
+            box-shadow: 0 0 15px rgba(0, 102, 255, 0.5);
+        }
+
+        .unreal-button {
+            background: linear-gradient(45deg, var(--unreal-orange), var(--unreal-red));
+            color: white;
+            box-shadow: 0 0 15px rgba(230, 133, 35, 0.5);
+        }
+
+        .engine-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 102, 255, 0.8);
+        }
+
+        .engine-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .engine-button:hover::before {
+            opacity: 1;
+        }
+
+        /* Project Dropdown Section */
+        .project-dropdown {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+            margin: 1rem 0;
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .project-dropdown.active {
+            max-height: 1000px;
+            transition: max-height 0.8s ease-in;
+        }
+
+        .project-dropdown::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--galaxy-blue), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-dropdown.active::before {
+            opacity: 1;
+        }
+
+        .unity-dropdown {
+            border: 1px solid rgba(0, 102, 255, 0.3);
+        }
+
+        .unity-dropdown.active {
+            box-shadow: 0 0 20px rgba(0, 102, 255, 0.3);
+            border: 1px solid var(--galaxy-blue);
+        }
+
+        .unreal-dropdown {
+            border: 1px solid rgba(230, 133, 35, 0.3);
+        }
+
+        .unreal-dropdown.active {
+            box-shadow: 0 0 20px rgba(230, 133, 35, 0.3);
+            border: 1px solid var(--unreal-orange);
+        }
+
+        .dropdown-content {
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .orbit-scroll {
+            display: flex;
+            overflow-x: auto;
+            gap: 2rem;
+            padding: 1rem 0;
+            margin: 1rem 0;
+        }
+
+        .comet-card {
+            min-width: 280px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .comet-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            border-color: var(--galaxy-blue);
+        }
+
+        /* Project Card Styling */
+        .project-card {
+            background: rgba(10, 10, 24, 0.7);
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .unity-project:hover {
+            border-color: var(--galaxy-blue);
+            box-shadow: 0 10px 25px rgba(0, 102, 255, 0.3);
+        }
+
+        .unreal-project:hover {
+            border-color: var(--unreal-orange);
+            box-shadow: 0 10px 25px rgba(230, 133, 35, 0.3);
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent, rgba(255,255,255,0.03), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--star-white);
+        }
+
+        .unity-project .project-title {
+            color: var(--galaxy-blue);
+        }
+
+        .unreal-project .project-title {
+            color: var(--unreal-orange);
+        }
+
+        .project-description {
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            font-size: 0.7rem;
+            padding: 0.3rem 0.6rem;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .unity-tag {
+            background: rgba(0, 102, 255, 0.2);
+            color: var(--galaxy-blue);
+        }
+
+        .unreal-tag {
+            background: rgba(230, 133, 35, 0.2);
+            color: var(--unreal-orange);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            font-size: 0.8rem;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .unity-link {
+            background: rgba(0, 102, 255, 0.2);
+            color: var(--galaxy-blue);
+            border: 1px solid rgba(0, 102, 255, 0.3);
+        }
+
+        .unity-link:hover {
+            background: rgba(0, 102, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 102, 255, 0.2);
+        }
+
+        .unreal-link {
+            background: rgba(230, 133, 35, 0.2);
+            color: var(--unreal-orange);
+            border: 1px solid rgba(230, 133, 35, 0.3);
+        }
+
+        .unreal-link:hover {
+            background: rgba(230, 133, 35, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(230, 133, 35, 0.2);
+        }
+
+        .project-link i {
+            transition: transform 0.3s ease;
+        }
+
+        .project-link:hover i {
+            transform: scale(1.2);
+        }
+
+        .project-link::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-link:hover::after {
+            opacity: 1;
+        }
+
+        /* Resume Section */
+        .resume-section {
+            text-align: center;
+            margin: 4rem auto;
+            max-width: 1200px;
+        }
+
+        .resume-button {
+            background: linear-gradient(45deg, var(--nebula-purple), var(--galaxy-blue));
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Orbitron', sans-serif;
+            margin-top: 2rem;
+            box-shadow: 0 0 15px rgba(0, 102, 255, 0.5);
+        }
+
+        .resume-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 25px rgba(0, 102, 255, 0.8);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: rgba(255, 255, 255, 0.03);
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .satellite-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .satellite-links a {
+            font-size: 1.8rem;
+            color: var(--star-white);
+            transition: all 0.3s;
+            padding: 0.5rem;
+            border-radius: 50%;
+        }
+
+        .satellite-links a:hover {
+            transform: rotate(360deg) scale(1.2);
+            color: var(--planet-orange);
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .portfolio-heading {
+                font-size: 2rem;
+                margin: 3rem 0 1.5rem;
+            }
+            
+            .about-label {
+                font-size: 1.8rem;
+            }
+            
+            .hero-title {
+                font-size: 1.6rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.3rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            
+            .cosmic-row {
+                padding: 1.5rem;
+            }
+
+            .engine-buttons {
+                gap: 2rem;
+            }
+
+            .engine-button {
+                min-width: 140px;
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            .dropdown-content {
+                grid-template-columns: 1fr;
+            }
+
+            .top-email {
+                font-size: 0.8rem;
+                padding: 0.4rem 0.8rem;
+            }
+
+            .top-email span {
+                display: none;
+            }
+
+            .top-email i {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Star Background -->
+    <div class="space-background" id="starfield"></div>
+
+    <!-- Navigation with properly aligned email -->
+    <nav class="astro-nav">
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=vallabham.work@gmail.com" class="top-email" title="Email Me">
+            <i class="fas fa-envelope"></i>
+            <span>vallabham.work@gmail.com</span>
+        </a>
+    </nav>
+
+    <!-- Main Portfolio Heading -->
+    <h1 class="portfolio-heading">My Portfolio</h1>
+
+    <!-- Hero Section -->
+    <section class="stellar-hero">
+        <div class="hero-content">
+            <div class="about-label">About Me:-</div>
+            <h1 class="hero-title">Vallabha Madhusudhan</h1>
+            <h2 class="hero-subtitle">Game Developer Exploring the Art of Game Design</h2>
+            <p>I'm a game developer passionate about building immersive, interactive experiences that resonate with players. With a growing background in development and a deepening focus on game design, I thrive on blending technical skills with creative storytelling.</p>
+            <p>I enjoy prototyping mechanics, fine-tuning gameplay systems, and pushing the boundaries of player interaction. My work reflects a continuous journey of learning, experimentation, and dedication to the craft of game creation.</p>
+            <p>Welcome to my portfolio — a space where code meets creativity, and ideas evolve into playable worlds.</p>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="cosmic-row" id="projects">
+        <h2 class="row-header">My Projects</h2>
+        
+        <!-- Engine Filter Buttons -->
+        <div class="engine-buttons">
+            <button class="engine-button unity-button" id="unity-btn">Unity Projects</button>
+            <button class="engine-button unreal-button" id="unreal-btn">Unreal Projects</button>
+        </div>
+
+        <!-- Unity Projects Dropdown -->
+        <div class="project-dropdown unity-dropdown" id="unity-dropdown">
+            <div class="dropdown-content">
+                <!-- Chaos Reborn Project -->
+                <div class="project-card unity-project">
+                    <h3 class="project-title">Chaos Reborn</h3>
+                    <p class="project-description">
+                        A fast-paced boomer shooter selected in IGDC TOP indie 40 and nominated at GAFX Bangalore. 
+                        Features intense movement mechanics including wall running, sliding, and dashing. 
+                        Create chaos with stylish gameplay to earn points and unlock power-ups. 
+                        Special abilities include crowd-controlling black holes and time-slowing grenades. 
+                        Arsenal includes Dual Sheriffs, shotgun, rifle, and rocket launcher - each with unique mechanics.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag unity-tag">Unity</span>
+                        <span class="tag">C#</span>
+                        <span class="tag">FPS</span>
+                        <span class="tag">Movement System</span>
+                        <span class="tag">IGDC Top 40</span>
+                        <span class="tag">GAFX Nominee</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://rishikesh-1.itch.io/chaos-reborn?fbclid=PAZXh0bgNhZW0CMTEAAadfF2nO0RQRwaV6ZoH9kqvW565aLtiglDTi6gesA9lqYwfOJp0YlGJfoen5hg_aem_Vg7Y3B_MzS-rFGHFltXQbw" 
+                           class="project-link unity-link" 
+                           target="_blank" 
+                           rel="noopener noreferrer">
+                            <i class="fas fa-play"></i> Play
+                        </a>
+                        <a href="https://github.com/XOROO0/ChaosReborn" 
+                           class="project-link unity-link" 
+                           target="_blank" 
+                           rel="noopener noreferrer">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Chrome Dino Game Project -->
+                <div class="project-card unity-project">
+                    <h3 class="project-title">Chrome Dino Game</h3>
+                    <p class="project-description">
+                        A simple, fast-paced endless runner where a dinosaur dodges obstacles to survive as long as possible. 
+                        Recreated the classic Chrome offline game with additional features and improved mechanics. 
+                        Features responsive controls, increasing difficulty, and a scoring system.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag unity-tag">Unity</span>
+                        <span class="tag">C#</span>
+                        <span class="tag">Endless Runner</span>
+                        <span class="tag">2D Game</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/XOROO0/ChromeDinoGame" 
+                           class="project-link unity-link" 
+                           target="_blank" 
+                           rel="noopener noreferrer">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Hack & Slash Prototype Project -->
+                <div class="project-card unity-project">
+                    <h3 class="project-title">Hack & Slash Prototype</h3>
+                    <p class="project-description">
+                        A prototype combat system inspired by Hades, featuring fast-paced melee combat with combo systems,
+                        dodge mechanics, and enemy AI behaviors. Implemented a responsive control scheme with animation blending
+                        and hit detection. The prototype includes various weapons with unique attack patterns and special abilities.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag unity-tag">Unity</span>
+                        <span class="tag">C#</span>
+                        <span class="tag">Combat System</span>
+                        <span class="tag">Animation</span>
+                        <span class="tag">AI</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/XOROO0/Hack-slash" 
+                           class="project-link unity-link" 
+                           target="_blank" 
+                           rel="noopener noreferrer">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Ragdoll Physics Prototype Project -->
+                <div class="project-card unity-project">
+                    <h3 class="project-title">Ragdoll Physics Prototype</h3>
+                    <p class="project-description">
+                        A physics-based prototype showcasing ragdoll effects similar to Fall Guys. Features dynamic character physics,
+                        collision responses, and humorous floppy movements. Implemented Unity's physics system to create exaggerated
+                        and entertaining character reactions to forces and impacts.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag unity-tag">Unity</span>
+                        <span class="tag">C#</span>
+                        <span class="tag">Physics</span>
+                        <span class="tag">Ragdoll</span>
+                        <span class="tag">Character Controller</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/XOROO0/RagDoll" 
+                           class="project-link unity-link" 
+                           target="_blank" 
+                           rel="noopener noreferrer">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Unreal Projects Dropdown -->
+        <div class="project-dropdown unreal-dropdown" id="unreal-dropdown">
+            <div class="dropdown-content">
+                <!-- Coming Soon Message -->
+                <div class="project-card unreal-project" style="grid-column: 1 / -1; text-align: center; padding: 3rem;">
+                    <h3 class="project-title">Unreal Engine Projects Coming Soon!</h3>
+                    <p class="project-description">
+                        I'm currently working on several Unreal Engine projects that will be added here shortly.
+                        Due to GitHub storage limitations, I'm in the process of optimizing these projects for upload.
+                    </p>
+                    <p class="project-description">
+                        Check back soon or reach out to me directly if you'd like to learn more about my Unreal Engine work!
+                    </p>
+                    <div class="project-tags" style="justify-content: center;">
+                        <span class="tag unreal-tag">Unreal Engine 5</span>
+                        <span class="tag unreal-tag">C++</span>
+                        <span class="tag unreal-tag">Blueprints</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section class="cosmic-row" id="resume">
+        <h2 class="row-header">My Resume</h2>
+        <div style="text-align: center;">
+            <button class="resume-button">Download Resume</button>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <h2 style="font-family: 'Orbitron', sans-serif; font-size: 1.8rem; margin-bottom: 1.5rem;">Get In Touch</h2>
+        <p style="max-width: 600px; margin: 0 auto 2rem;">Feel free to reach out for collaborations or just to say hello!</p>
+        <div class="satellite-links">
+            <a href="https://github.com/XOROO0?tab=repositories" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/vallabha-madhusudhan-012a69320/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://itch.io/dashboard" target="_blank" title="Itch.io"><i class="fab fa-itch-io"></i></a>
+        </div>
+    </section>
+
+    <script>
+        // Generate animated stars
+        function createStarfield() {
+            const container = document.getElementById('starfield');
+            for (let i = 0; i < 200; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.width = Math.random() * 3 + 'px';
+                star.style.height = star.style.width;
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 1.5 + 's';
+                container.appendChild(star);
+            }
+        }
+        createStarfield();
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.astro-nav');
+            if (window.scrollY > 50) {
+                nav.style.backgroundColor = 'rgba(10, 10, 24, 0.98)';
+                nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.3)';
+            } else {
+                nav.style.backgroundColor = 'rgba(10, 10, 24, 0.95)';
+                nav.style.boxShadow = 'none';
+            }
+        });
+
+        // Make resume button functional
+        document.querySelector('.resume-button').addEventListener('click', function() {
+            window.open('https://drive.google.com/file/d/1dR0YrZ03Fzdu-NndWvx4kHbgjA0jN-r8/view?usp=sharing', '_blank');
+        });
+
+        // Project dropdown functionality
+        const unityBtn = document.getElementById('unity-btn');
+        const unrealBtn = document.getElementById('unreal-btn');
+        const unityDropdown = document.getElementById('unity-dropdown');
+        const unrealDropdown = document.getElementById('unreal-dropdown');
+
+        // Initially hide both dropdowns
+        unityDropdown.style.maxHeight = '0';
+        unrealDropdown.style.maxHeight = '0';
+
+        // Toggle Unity projects
+        unityBtn.addEventListener('click', function() {
+            if (unityDropdown.classList.contains('active')) {
+                unityDropdown.classList.remove('active');
+                unityDropdown.style.maxHeight = '0';
+            } else {
+                unityDropdown.classList.add('active');
+                unityDropdown.style.maxHeight = unityDropdown.scrollHeight + 'px';
+                
+                // Close Unreal dropdown if open
+                if (unrealDropdown.classList.contains('active')) {
+                    unrealDropdown.classList.remove('active');
+                    unrealDropdown.style.maxHeight = '0';
+                }
+            }
+        });
+
+        // Toggle Unreal projects
+        unrealBtn.addEventListener('click', function() {
+            if (unrealDropdown.classList.contains('active')) {
+                unrealDropdown.classList.remove('active');
+                unrealDropdown.style.maxHeight = '0';
+            } else {
+                unrealDropdown.classList.add('active');
+                unrealDropdown.style.maxHeight = unrealDropdown.scrollHeight + 'px';
+                
+                // Close Unity dropdown if open
+                if (unityDropdown.classList.contains('active')) {
+                    unityDropdown.classList.remove('active');
+                    unityDropdown.style.maxHeight = '0';
+                }
+            }
+        });
+
+        // Ensure project links work properly
+        document.querySelectorAll('.project-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Only prevent default if href is empty
+                if (this.getAttribute('href') === '#') {
+                    e.preventDefault();
+                }
+                // Otherwise, let the link work normally
+            });
+        });
+    </script>
+</body>
+</html>
